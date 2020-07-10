@@ -2,8 +2,8 @@
                 [backgroundImage]="'assets/images/others/senegal.jpg'"
                 [bgImageAnimate]="true"
                 [contentOffsetToTop]="true"
-                [title]="'Trouvez votre domicile en quelques click'"
-                [desc]="'vivre son exeprience immobiliere '"
+                [title]="'Bienvenue Chez B&M immo'"
+                [desc]="'votre partenaire immoblier '"
                 [isHomePage]="true">
 </app-header-image> 
 
@@ -36,7 +36,7 @@
             <div fxFlex="100" fxLayoutAlign="start start" class="p-2"> 
                 <mat-chip-list [ngClass]="(settings.rtl) ? 'ml-2' : 'mr-2'">
                     <mat-chip selected disableRipple="true" color="warn" class="uppercase ws-nowrap">
-                        {{ pagination?.total }} found
+                        {{ pagination?.total }} resultats
                     </mat-chip> 
                 </mat-chip-list>
                 <app-properties-search-results-filters 
