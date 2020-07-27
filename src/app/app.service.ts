@@ -95,20 +95,20 @@ export class AppService {
 
   public getPropertyTypes(){
     return [ 
-      { id: 1, name: 'Office' },
-      { id: 2, name: 'House' },
-      { id: 3, name: 'Apartment' }
+      { id: 1, name: 'Bureau' },
+      { id: 2, name: 'Maison' },
+      { id: 3, name: 'Appartement' }
     ]
   }
 
   public getPropertyStatuses(){
     return [ 
-      { id: 1, name: 'For Sale' },
-      { id: 2, name: 'For Rent' },
-      { id: 3, name: 'Open House' },
-      { id: 4, name: 'No Fees' },
-      { id: 5, name: 'Hot Offer' },
-      { id: 6, name: 'Sold' }
+      { id: 1, name: 'Vente' },
+      { id: 2, name: 'Location' },
+   
+      { id: 3, name: 'Sans frais' },
+      { id: 4, name: 'Bonne affaire' },
+     
     ]
   }
 
