@@ -4,7 +4,7 @@
 
         <div fxFlex="100" fxFlex.gt-sm="33.3" fxFlex.sm="50" class="p-2">
             <mat-form-field [appearance]="getAppearance()" [floatLabel]="getFloatLabel()">
-                <mat-label>Type du bien </mat-label> 
+                <mat-label>Que cherchez vous? </mat-label> 
                 <mat-select placeholder="Selectioner un type de bien" formControlName="propertyType">
                     <mat-option *ngFor="let propertyType of propertyTypes" [value]="propertyType">
                         {{propertyType.name}}
@@ -15,8 +15,8 @@
 
         <div fxFlex="100" fxFlex.gt-sm="33.3" fxFlex.sm="50" class="p-2">
             <mat-form-field [appearance]="getAppearance()" [floatLabel]="getFloatLabel()">
-                <mat-label>Type de vente</mat-label>
-                <mat-select placeholder="Select Property Status" formControlName="propertyStatus" multiple>
+                <mat-label>Quel est votre projet?</mat-label>
+                <mat-select placeholder="Location,Vente..." formControlName="propertyStatus" multiple>
                     <mat-option *ngFor="let propertyStatus of propertyStatuses" [value]="propertyStatus">
                         {{propertyStatus.name}}
                     </mat-option>
@@ -29,7 +29,7 @@
             <div fxLayout="row wrap" fxLayoutAlign="space-between center">
                 <div fxFlex="45">
                     <mat-form-field [appearance]="getAppearance()" [floatLabel]="getFloatLabel()">
-                        <mat-label>{{(variant == 1) ? 'Prix' : 'Price From'}}</mat-label>
+                        <mat-label>{{(variant == 1) ? 'Quel est votre budget?' : 'Price From'}}</mat-label>
                         <input matInput autocomplete="off" placeholder="min." formControlName="from" type="text" onlyNumber>                  
                     </mat-form-field>
                 </div>
@@ -51,8 +51,8 @@
 
             <div fxFlex="100" fxFlex.gt-sm="33.3" fxFlex.sm="50" class="p-2">                         
                 <mat-form-field [appearance]="getAppearance()" [floatLabel]="getFloatLabel()">
-                    <mat-label>City</mat-label>
-                    <mat-select placeholder="Select City..." formControlName="city" (selectionChange)="onSelectCity()">
+                    <mat-label>Ville</mat-label>
+                    <mat-select placeholder="Selectioner votre ville ..." formControlName="city" (selectionChange)="onSelectCity()">
                         <mat-option *ngFor="let city of cities" [value]="city">
                             {{city.name}}
                         </mat-option>
@@ -60,17 +60,17 @@
                 </mat-form-field>
             </div>
 
-            <div fxFlex="100" fxFlex.gt-sm="33.3" fxFlex.sm="50" class="p-2">
+            <!-- <div fxFlex="100" fxFlex.gt-sm="33.3" fxFlex.sm="50" class="p-2">
                 <mat-form-field [appearance]="getAppearance()" [floatLabel]="getFloatLabel()">
-                    <mat-label>Zip Code</mat-label>
+                    <mat-label>Code postale</mat-label>
                     <input matInput placeholder="exp. 98104" autocomplete="off" formControlName="zipCode">                  
                 </mat-form-field>
-            </div>
+            </div> -->
 
             <div fxFlex="100" fxFlex.gt-sm="33.3" fxFlex.sm="50" class="p-2">                         
                 <mat-form-field [appearance]="getAppearance()" [floatLabel]="getFloatLabel()">
-                    <mat-label>Neighborhood</mat-label>
-                    <mat-select placeholder="Select Neighborhood..." formControlName="neighborhood" multiple (selectionChange)="onSelectNeighborhood()">
+                    <mat-label>Quartier</mat-label>
+                    <mat-select placeholder="Selectioner votre quartier..." formControlName="neighborhood" multiple (selectionChange)="onSelectNeighborhood()">
                         <mat-option *ngFor="let neighborhood of neighborhoods | filterNeighborhoods: form.get('city').value?.id" [value]="neighborhood">
                             {{neighborhood.name}}
                         </mat-option>
@@ -78,24 +78,24 @@
                 </mat-form-field>
             </div>
 
-            <div fxFlex="100" fxFlex.gt-sm="33.3" fxFlex.sm="50" class="p-2">                         
+            <!-- <div fxFlex="100" fxFlex.gt-sm="33.3" fxFlex.sm="50" class="p-2">                         
                 <mat-form-field [appearance]="getAppearance()" [floatLabel]="getFloatLabel()">
-                    <mat-label>Street</mat-label>
+                    <mat-label>Rue</mat-label>
                     <mat-select placeholder="Select Street..." formControlName="street" multiple>
                         <mat-option *ngFor="let street of streets | filterStreets : { neighborhoods:form.get('neighborhood').value, cityId:form.get('city').value?.id } " [value]="street">
                             {{street.name}}
                         </mat-option>
                     </mat-select> 
                 </mat-form-field>
-            </div>
+            </div> -->
     
             <div fxFlex="100" fxFlex.gt-sm="33.3" fxFlex.sm="50" class="p-2" formGroupName="bedrooms">
     
                 <div fxLayout="row wrap" fxLayoutAlign="space-between center">
                     <div fxFlex="45">
                         <mat-form-field [appearance]="getAppearance()" [floatLabel]="getFloatLabel()">
-                            <mat-label>{{(variant == 1) ? 'Bedrooms' : 'Bedrooms From'}}</mat-label>
-                            <mat-select placeholder="From" formControlName="from">
+                            <mat-label>{{(variant == 1) ? 'Nombre de chambre' : 'Bedrooms From'}}</mat-label>
+                            <mat-select placeholder="min." formControlName="from">
                                 <mat-option *ngFor="let number of [1,2,3,4,5,6,7,8,9,10]" [value]="number">
                                     {{number}}
                                 </mat-option>
@@ -108,7 +108,7 @@
                     <div fxFlex="45">
                         <mat-form-field [appearance]="getAppearance()" [floatLabel]="getFloatLabel()">
                             <mat-label>{{(variant == 1) ? '' : 'Bedrooms To'}}</mat-label>
-                            <mat-select placeholder="To" formControlName="to">
+                            <mat-select placeholder="max." formControlName="to">
                                 <mat-option *ngFor="let number of [1,2,3,4,5,6,7,8,9,10]" [value]="number">
                                     {{number}}
                                 </mat-option>
@@ -124,8 +124,8 @@
                 <div fxLayout="row wrap" fxLayoutAlign="space-between center">
                     <div fxFlex="45">
                         <mat-form-field [appearance]="getAppearance()" [floatLabel]="getFloatLabel()">
-                            <mat-label>{{(variant == 1) ? 'Bathrooms' : 'Bathrooms From'}}</mat-label>
-                            <mat-select placeholder="From" formControlName="from">
+                            <mat-label>{{(variant == 1) ? 'Nombre de salle de bain' : 'Bathrooms From'}}</mat-label>
+                            <mat-select placeholder="min." formControlName="from">
                                 <mat-option *ngFor="let number of [1,2,3,4,5,6,7,8,9,10]" [value]="number">
                                     {{number}}
                                 </mat-option>
@@ -138,7 +138,7 @@
                     <div fxFlex="45">
                         <mat-form-field [appearance]="getAppearance()" [floatLabel]="getFloatLabel()">
                             <mat-label>{{(variant == 1) ? '' : 'Bathrooms To'}}</mat-label>
-                            <mat-select placeholder="To" formControlName="to">
+                            <mat-select placeholder="max." formControlName="to">
                                 <mat-option *ngFor="let number of [1,2,3,4,5,6,7,8,9,10]" [value]="number">
                                     {{number}}
                                 </mat-option>
@@ -149,7 +149,7 @@
     
             </div> 
 
-            <div fxFlex="100" fxFlex.gt-sm="33.3" fxFlex.sm="50" class="p-2" formGroupName="garages">
+            <!-- <div fxFlex="100" fxFlex.gt-sm="33.3" fxFlex.sm="50" class="p-2" formGroupName="garages">
     
                 <div fxLayout="row wrap" fxLayoutAlign="space-between center">
                     <div fxFlex="45">
@@ -177,15 +177,15 @@
                     </div>
                 </div> 
     
-            </div> 
+            </div>  -->
 
             <div fxFlex="100" fxFlex.gt-sm="33.3" fxFlex.sm="50" class="p-2" formGroupName="area">
 
                 <div fxLayout="row wrap" fxLayoutAlign="space-between center">
                     <div fxFlex="45">
                         <mat-form-field [appearance]="getAppearance()" [floatLabel]="getFloatLabel()">
-                            <mat-label>{{(variant == 1) ? 'Area' : 'Area From'}}</mat-label>
-                            <input matInput autocomplete="off" placeholder="From" formControlName="from" type="text" onlyNumber>                  
+                            <mat-label>{{(variant == 1) ? 'Surface' : 'Area From'}}</mat-label>
+                            <input matInput autocomplete="off" placeholder="min." formControlName="from" type="text" onlyNumber>                  
                         </mat-form-field>
                     </div>
                     <div fxFlex="10" class="text-center" [class.pt-2]="variant == 2">
@@ -194,20 +194,20 @@
                     <div fxFlex="45">
                         <mat-form-field [appearance]="getAppearance()" [floatLabel]="getFloatLabel()">
                             <mat-label>{{(variant == 1) ? '' : 'Area To'}}</mat-label>
-                            <input matInput autocomplete="off" placeholder="To" formControlName="to" type="text" onlyNumber>                  
+                            <input matInput autocomplete="off" placeholder="max." formControlName="to" type="text" onlyNumber>                  
                         </mat-form-field>
                     </div>
                 </div> 
     
             </div>
 
-            <div fxFlex="100" fxFlex.gt-sm="33.3" fxFlex.sm="50" class="p-2" formGroupName="yearBuilt">
+            <!-- <div fxFlex="100" fxFlex.gt-sm="33.3" fxFlex.sm="50" class="p-2" formGroupName="yearBuilt">
 
                 <div fxLayout="row wrap" fxLayoutAlign="space-between center">
                     <div fxFlex="45">
                         <mat-form-field [appearance]="getAppearance()" [floatLabel]="getFloatLabel()">
                             <mat-label>{{(variant == 1) ? 'Year Built' : 'Fear Built From'}}</mat-label>
-                            <input matInput autocomplete="off" placeholder="From" formControlName="from" type="text" onlyNumber maxlength="4">                  
+                            <input matInput autocomplete="off" placeholder="min." formControlName="from" type="text" onlyNumber maxlength="4">                  
                         </mat-form-field>
                     </div>
                     <div fxFlex="10" class="text-center" [class.pt-2]="variant == 2">
@@ -216,12 +216,12 @@
                     <div fxFlex="45">
                         <mat-form-field [appearance]="getAppearance()" [floatLabel]="getFloatLabel()">
                             <mat-label>{{(variant == 1) ? '' : 'Year Built To'}}</mat-label>
-                            <input matInput autocomplete="off" placeholder="To" formControlName="to" type="text" onlyNumber maxlength="4">                  
+                            <input matInput autocomplete="off" placeholder="max." formControlName="to" type="text" onlyNumber maxlength="4">                  
                         </mat-form-field>
                     </div>
                 </div> 
     
-            </div>
+            </div> -->
 
             <div fxFlex="100" class="mb-2"> 
                 <p class="uppercase m-2 fw-500">Features</p> 
@@ -239,8 +239,8 @@
   
 
     <div fxLayout="row" fxLayoutAlign="center center" class="p-2">       
-      <button mat-raised-button color="warn" class="uppercase mx-1" (click)="reset()">Clear</button>
-      <button *ngIf="!vertical" mat-raised-button color="primary" class="uppercase mx-1" (click)="showMore = !showMore">{{(showMore) ? 'Hide' : 'Advanced'}}</button>      
+      <button mat-raised-button color="warn" class="uppercase mx-1" (click)="reset()">réinitialiser</button>
+      <button *ngIf="!vertical" mat-raised-button color="primary" class="uppercase mx-1" (click)="showMore = !showMore">{{(showMore) ? 'cacher' : 'recherche Avancée'}}</button>      
       <button *ngIf="searchOnBtnClick" mat-raised-button color="primary" class="search-btn mx-1" (click)="search()"><mat-icon>search</mat-icon> Search</button>
     </div>
     
